@@ -22,6 +22,10 @@ import {
   FileCheck,
   MessageCircle,
   MapPin,
+  User,
+  Handshake,
+  Truck,
+  Layers,
 } from "lucide-react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { useRef } from "react";
@@ -50,6 +54,12 @@ export default function HomePage() {
   const detailsInView = useInView(detailsRef, { once: true });
   const contactInView = useInView(contactRef, { once: true });
 
+  const scrollToSection = (ref) => {
+    if (ref.current) {
+      ref.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   const fadeIn = {
     hidden: { opacity: 0, y: 50 },
     visible: {
@@ -67,11 +77,11 @@ export default function HomePage() {
     },
   };
   const services = [
-    { id: 1, title: "General Sales & Service Agent (GSSA)", icon: Zap },
+    { id: 1, title: "General Sales & Service Agent (GSSA)", icon: User },
     { id: 2, title: "Total Cargo Management (TCM)", icon: Package },
-    { id: 3, title: "General Sales Agent (GSA)", icon: Globe },
-    { id: 4, title: "Cargo Sales Agent (CSA)", icon: Globe },
-    { id: 5, title: "Block Space Agreements (BSA)", icon: Globe },
+    { id: 3, title: "General Sales Agent (GSA)", icon: Handshake },
+    { id: 4, title: "Cargo Sales Agent (CSA)", icon: Truck },
+    { id: 5, title: "Block Space Agreements (BSA)", icon: Layers },
   ];
   const teamItems = [
     { id: 1, title: "Airline Sales & Marketing" },
@@ -82,7 +92,7 @@ export default function HomePage() {
     { id: 6, title: "IT System Integration (Cargo Spot, SmartKargo, etc.)" },
   ];
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white overflow-hidden">
       {/* Navigation */}
       <nav className="flex items-center justify-between px-6 py-4 bg-white">
         <div className="flex items-center space-x-2">
@@ -112,8 +122,10 @@ export default function HomePage() {
             Contact
           </a>
         </div> */}
-
-        <Button className="bg-[#B90004] text-white px-6 py-2 rounded-full hover:bg-red-800">
+        <Button
+          className="bg-[#B90004] text-white px-6 py-2 rounded-full hover:bg-red-800"
+          onClick={() => scrollToSection(detailsRef)}
+        >
           Contact
         </Button>
       </nav>
@@ -126,11 +138,11 @@ export default function HomePage() {
               initial="hidden"
               animate={heroInView ? "visible" : "hidden"}
               variants={fadeIn}
-              className="text-5xl md:text-7xl font-bold text-gray-900 mb-6"
+              className="text-4xl md:text-7xl font-bold text-gray-900 mb-6"
             >
-              Seamless Logistics,
+              Your Trusted Wing
               <br />
-              Faster <span className="text-[#B90004] italic">Deliveries</span>
+              in <span className="text-[#B90004] italic">South Korea</span>
             </motion.h1>
             <motion.p
               initial="hidden"
@@ -138,7 +150,7 @@ export default function HomePage() {
               variants={fadeIn}
               className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto"
             >
-              Streamlined freight management with real-time tracking.
+              Strengthening your footprint across Asia and beyond.
             </motion.p>
 
             <motion.div
@@ -155,12 +167,16 @@ export default function HomePage() {
               className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
             >
               <motion.div variants={fadeIn}>
-                <Button className="bg-[#192E72] text-white px-8 py-3 rounded-full hover:bg-blue-900">
+                <Button
+                  onClick={() => scrollToSection(servicesRef)}
+                  className="bg-[#192E72] text-white px-8 py-3 rounded-full hover:bg-blue-900"
+                >
                   Our Services
                 </Button>
               </motion.div>
               <motion.div variants={fadeIn}>
                 <Button
+                  onClick={() => scrollToSection(detailsRef)}
                   variant="outline"
                   className="px-8 py-3 rounded-full border-[#192E72] text-[#192E72] hover:bg-[#192E72] hover:text-white bg-transparent"
                 >
@@ -192,7 +208,7 @@ export default function HomePage() {
             />
 
             {/* User Count Overlay */}
-            <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2 flex items-center space-x-2">
+            {/* <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2 flex items-center space-x-2">
               <div className="flex -space-x-2">
                 <div className="w-8 h-8 bg-gray-300 rounded-full border-2 border-white">
                   <Image
@@ -229,12 +245,10 @@ export default function HomePage() {
               </div>
               <span className="text-sm font-medium">+10M User</span>
             </div>
-
-            {/* Rating Overlay */}
             <div className="absolute top-6 right-6 bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2 flex items-center space-x-2">
               <Star className="w-5 h-5 text-orange-500 fill-current" />
               <span className="text-sm font-medium">845K+ (4.5 Review)</span>
-            </div>
+            </div> */}
           </motion.div>
         </div>
       </section>
@@ -247,7 +261,7 @@ export default function HomePage() {
             initial="hidden"
             animate={partnersInView ? "visible" : "hidden"}
             variants={staggerChildren}
-            className="w-full flex justify-between items-center mb-16  group"
+            className="w-full flex flex-wrap justify-around items-center mb-16  group"
           >
             {/* <Image
               src="/images/c1.png"
@@ -291,7 +305,7 @@ export default function HomePage() {
               height={1000}
               className="w-40 h-10 grayscale hover:grayscale-0 opacity-60 hover:opacity-100"
             /> */}
-            {[1, 2, 3, 7, 5, 6].map((num, index) => (
+            {[1, 2, 3, 4, 5, 6].map((num, index) => (
               <motion.div
                 key={num}
                 variants={fadeIn}
@@ -320,7 +334,7 @@ export default function HomePage() {
               <p className="text-[#B90004] font-medium mb-4">
                 Company Overview
               </p>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-xl md:text-4xl font-bold text-gray-900 mb-6">
                 World Prime Services Co. Ltd.
                 {/* <br />
                 Networks */}
@@ -334,12 +348,12 @@ export default function HomePage() {
                 representation across sales, operations, and regulatory
                 compliance.
               </p>
-              <Button
+              {/* <Button
                 variant="outline"
                 className="px-8 py-3 rounded-full border-[#192E72] text-[#192E72] hover:bg-[#192E72] hover:text-white bg-transparent"
               >
                 Stay our Partner
-              </Button>
+              </Button> */}
             </motion.div>
 
             <motion.div
@@ -369,13 +383,13 @@ export default function HomePage() {
             initial="hidden"
             animate={servicesInView ? "visible" : "hidden"}
             variants={fadeIn}
-            className="flex justify-between items-start mb-12"
+            className="flex flex-col md:flex-row justify-between gap-10 items-start mb-12"
           >
             <h2 className="text-4xl font-bold text-gray-900">
               Business Purpose
               <br />& Activities
             </h2>
-            <div className="text-right">
+            <div className=" md:text-right">
               {/* <Button className="bg-orange-500 text-white px-6 py-2 rounded-full hover:bg-orange-600 mb-4">
                 View all Service
               </Button> */}
@@ -531,7 +545,7 @@ export default function HomePage() {
               <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/50 to-transparent backdrop-blur-md rounded-2xl transition-opacity duration-300 "></div>
               <div className="relative z-10 w-full flex flex-col justify-center items-start">
                 <hr className="my-4 w-16 border-t-4 border-[#B90004]" />
-                <h3 className="text-3xl md:text-4xl font-bold text-white mb-6 drop-shadow-lg">
+                <h3 className="text-xl md:text-3xl lg:text-4xl font-bold text-white mb-6 drop-shadow-lg">
                   Our leadership brings{" "}
                   <span className="text-red-600">
                     decades of combined experience
@@ -725,19 +739,19 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
+      {/* 
       <section
         ref={detailsRef}
         className="relative px-6 py-20 bg-white border-t border-gray-200 overflow-hidden"
       >
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
-            {/* Company Details - Enhanced with icons and animation */}
+
             <motion.div
               initial="hidden"
               animate={detailsInView ? "visible" : "hidden"}
               variants={staggerChildren}
-              className="bg-white rounded-2xl  p-8 transform transition-all "
+              className="bg-white rounded-2xl p-8 transform transition-all"
             >
               <div className="flex items-center mb-10">
                 <div className="bg-[#192E72] from-[#B90004] to-[#192E72] p-3 rounded-lg">
@@ -800,67 +814,6 @@ export default function HomePage() {
                 ))}
               </motion.div>
             </motion.div>
-
-            {/* Get in Touch - Enhanced with gradient and CTA */}
-            {/* <div className="relative">
-              <div className="absolute -inset-2 bg-[#B90004] rounded-2xl blur opacity-25"></div>
-              <div className="relative bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-10 shadow-2xl">
-                <div className="flex items-center mb-10">
-                  <div className="bg-[#B90004] p-3 rounded-lg">
-                    <MessageCircle className="h-8 w-8 text-white" />
-                  </div>
-                  <h2 className="text-3xl font-bold text-white ml-4">
-                    Get in Touch
-                  </h2>
-                </div>
-
-                <p className="text-gray-300 mb-8 text-lg">
-                  Ready to collaborate? Contact us for business inquiries or
-                  partnership opportunities
-                </p>
-
-                <div className="space-y-6">
-                  <div className="flex items-center bg-gray-800/50 backdrop-blur-sm rounded-xl p-5 transition-all hover:bg-gray-700/50">
-                    <div className="flex-shrink-0 bg-[#B90004] p-3 rounded-lg">
-                      <Mail className="h-6 w-6 text-white" />
-                    </div>
-                    <div className="ml-4">
-                      <p className="text-sm font-medium text-gray-400">
-                        Email us at
-                      </p>
-                      <a
-                        href="mailto:marketing@groupconcorde.com"
-                        className="text-xl font-bold text-white hover:text-orange-300 transition-colors"
-                      >
-                        marketing@groupconcorde.com
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center bg-gray-800/50 backdrop-blur-sm rounded-xl p-5 transition-all hover:bg-gray-700/50">
-                    <div className="flex-shrink-0 bg-[#B90004] p-3 rounded-lg">
-                      <MapPin className="h-6 w-6 text-white" />
-                    </div>
-                    <div className="ml-4">
-                      <p className="text-sm font-medium text-gray-400">
-                        Office Address
-                      </p>
-                      <p className="text-xl font-bold text-white">
-                        Nextthey 55-ho, Panpacific B/D 2F,
-                        <br />
-                        Digital-ro 31-gil 12,
-                        <br />
-                        Guro-gu, Seoul, Korea 08380
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <button className="mt-10 w-full py-4 bg-[#B90004] rounded-xl text-white font-bold text-lg shadow-lg transform transition-all hover:-translate-y-0.5 hover:shadow-xl">
-                  Schedule a Consultation
-                </button>
-              </div>
-            </div> */}
 
             <motion.div
               ref={contactRef}
@@ -930,12 +883,161 @@ export default function HomePage() {
             </motion.div>
           </div>
         </div>
+      </section> */}
+      <section
+        ref={detailsRef}
+        className="relative px-4 sm:px-6 lg:px-8 py-16 sm:py-20 bg-white border-t border-gray-200 overflow-hidden"
+      >
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 items-start">
+            {/* Company Details */}
+            <motion.div
+              initial="hidden"
+              animate={detailsInView ? "visible" : "hidden"}
+              variants={staggerChildren}
+              className="bg-white rounded-2xl p-6 sm:p-8 transform transition-all"
+            >
+              <div className="flex items-center mb-6 sm:mb-10">
+                <div className="bg-[#192E72] p-3 rounded-lg">
+                  <Building2 className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+                </div>
+                <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 ml-3 sm:ml-4">
+                  Company Details
+                </h2>
+              </div>
+
+              <motion.div
+                variants={staggerChildren}
+                className="space-y-6 sm:space-y-8"
+              >
+                {[
+                  {
+                    icon: Building2,
+                    label: "Company Name",
+                    value: "World Prime Services Co. Ltd.",
+                  },
+                  {
+                    icon: Scale,
+                    label: "Legal Status",
+                    value: "Corporation registered in South Korea",
+                  },
+                  {
+                    icon: Calendar,
+                    label: "Year of Establishment",
+                    value: "2017",
+                  },
+                  {
+                    icon: CircleDollarSign,
+                    label: "Initial Capital",
+                    value: "KRW 100,000,000",
+                  },
+                  {
+                    icon: FileCheck,
+                    label: "Business Registration",
+                    value: "Complete and compliant with Korean authorities",
+                  },
+                ].map((item, index) => (
+                  <motion.div
+                    key={index}
+                    variants={fadeIn}
+                    whileHover={{
+                      scale: 1.02,
+                      transition: { duration: 0.3 },
+                    }}
+                    className="flex items-start group transform transition-all hover:-translate-y-1"
+                  >
+                    <div className="bg-gray-100 p-2 rounded-lg group-hover:bg-blue-100 transition-colors">
+                      <item.icon className="h-5 w-5 sm:h-6 sm:w-6 text-[#192E72]" />
+                    </div>
+                    <div className="ml-3 sm:ml-4">
+                      <p className="text-xs sm:text-sm font-medium text-gray-500">
+                        {item.label}
+                      </p>
+                      <p className="text-base sm:text-lg font-semibold text-gray-900 mt-1">
+                        {item.value}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </motion.div>
+
+            {/* Contact Section */}
+            <motion.div
+              ref={contactRef}
+              initial="hidden"
+              animate={contactInView ? "visible" : "hidden"}
+              variants={fadeIn}
+              className="w-full"
+            >
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8">
+                Get in Touch
+              </h2>
+              <div className="bg-gray-100 rounded-2xl p-6 sm:p-8">
+                <p className="text-gray-600 mb-5 sm:mb-6 text-sm sm:text-base">
+                  For business inquiries or partnership opportunities:
+                </p>
+
+                <motion.div
+                  variants={fadeIn}
+                  whileHover={{
+                    scale: 1.03,
+                    boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
+                    transition: { duration: 0.3 },
+                  }}
+                  className="flex flex-col sm:flex-row gap-2 items-start sm:items-center space-x-4 mb-6 sm:mb-8 transition-all hover:bg-gray-200 p-0 sm:p-5 rounded-xl"
+                >
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#B90004] rounded-full flex items-center justify-center">
+                    <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                  </div>
+                  <div>
+                    <p className="text-xs sm:text-sm text-gray-600 mb-1">
+                      Email:
+                    </p>
+                    <a
+                      href="mailto:marketing@groupconcorde.com"
+                      className="text-base sm:text-lg font-semibold text-gray-900 hover:text-[#B90004] transition-colors"
+                    >
+                      marketing@groupconcorde.com
+                    </a>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  variants={fadeIn}
+                  whileHover={{
+                    scale: 1.03,
+                    boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
+                    transition: { duration: 0.3 },
+                  }}
+                  className="flex flex-col sm:flex-row items-start gap-2 sm:items-center space-x-4 transition-all hover:bg-gray-200 p-0 sm:p-5 rounded-xl"
+                >
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#B90004] rounded-full flex items-center justify-center">
+                    <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                  </div>
+                  <div>
+                    <p className="text-xs sm:text-sm text-gray-600 mb-1">
+                      Office Address:
+                    </p>
+                    <address className="not-italic text-base sm:text-lg font-semibold text-gray-900 hover:text-[#B90004] transition-colors">
+                      Nextthey 55-ho, Panpacific B/D 2F,
+                      <br />
+                      Digital-ro 31-gil 12,
+                      <br />
+                      Guro-gu, Seoul, Korea 08380
+                    </address>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
       </section>
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white px-6 py-16">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-3 gap-12 mb-12">
+          <div className="grid md:grid-cols-2 gap-12 mb-12">
             {/* Company Info */}
             <div>
               <div className="flex items-center space-x-2 mb-6">
@@ -1016,9 +1118,9 @@ export default function HomePage() {
             </div>
 
             {/* Newsletter */}
-            <div>
+            {/* <div>
               <h3 className="text-lg font-bold mb-6">FOLLOW US</h3>
-              {/* <div className="flex mb-6">
+              <div className="flex mb-6">
                 <Input
                   placeholder="Enter your email"
                   className="bg-gray-800 border-gray-700 text-white rounded-l-full px-4 py-2 flex-1"
@@ -1026,12 +1128,12 @@ export default function HomePage() {
                 <Button className="bg-orange-500 text-white px-6 py-2 rounded-r-full hover:bg-orange-600">
                   Subscribe
                 </Button>
-              </div> */}
+              </div>
               <div className="">
-                {/* <div className="flex items-center space-x-3">
+                <div className="flex items-center space-x-3">
                   <Phone className="w-4 h-4 text-gray-400" />
                   <span className="text-gray-400">(207) 555-0119</span>
-                </div> */}
+                </div>
 
                 <div className="flex space-x-4">
                   <Facebook className="w-5 h-5 text-gray-400 hover:text-white cursor-pointer" />
@@ -1040,12 +1142,12 @@ export default function HomePage() {
                   <Instagram className="w-5 h-5 text-gray-400 hover:text-white cursor-pointer" />
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
 
           <div className="border-t border-gray-800 pt-8">
             <div className="text-center text-gray-400">
-              ©WorldPrimeService2025. Designed by{" "}
+              © World Prime Service2025. Designed by{" "}
               <a
                 href="https://apacedigitalcargo.com/"
                 target="_blank"
