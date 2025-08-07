@@ -142,7 +142,7 @@ export default function HomePage() {
             >
               Your Trusted Wing
               <br />
-              in <span className="text-[#B90004] italic">South Korea</span>
+              in <span className="text-[#B90004]">Japan</span>
             </motion.h1>
             <motion.p
               initial="hidden"
@@ -305,7 +305,7 @@ export default function HomePage() {
               height={1000}
               className="w-40 h-10 grayscale hover:grayscale-0 opacity-60 hover:opacity-100"
             /> */}
-            {[1, 2, 3, 4, 5, 6].map((num, index) => (
+            {[1, 7, 8].map((num, index) => (
               <motion.div
                 key={num}
                 variants={fadeIn}
@@ -335,18 +335,17 @@ export default function HomePage() {
                 Company Overview
               </p>
               <h2 className="text-xl md:text-4xl font-bold text-gray-900 mb-6">
-                World Prime Services Co. Ltd.
+                World Prime Services株式会社
                 {/* <br />
                 Networks */}
               </h2>
               <p className="text-gray-600 mb-8 leading-relaxed">
-                World Prime Services Co. Ltd. is a legally registered
-                corporation in South Korea, committed to delivering efficient,
-                reliable, and strategic solutions in the aviation industry.
-                Since our inception, we have built a strong reputation for
-                providing integrated air cargo and passenger airline
-                representation across sales, operations, and regulatory
-                compliance.
+                World Prime Services株式会社 is a legally registered corporation
+                in Japan, committed to delivering efficient, reliable, and
+                strategic solutions in the aviation industry. Since our
+                inception, we have built a strong reputation for providing
+                integrated air cargo and passenger airline representation across
+                sales, operations, and regulatory compliance.
               </p>
               {/* <Button
                 variant="outline"
@@ -635,7 +634,7 @@ export default function HomePage() {
                 Our Team
               </h2>
               <p className="text-gray-600 mb-8">
-                Our Seoul-based team comprises experienced professionals with
+                Our japan-based team comprises experienced professionals with
                 specialized expertise in:
               </p>
 
@@ -914,27 +913,27 @@ export default function HomePage() {
                   {
                     icon: Building2,
                     label: "Company Name",
-                    value: "World Prime Services Co. Ltd.",
+                    value: "World Prime Services株式会社",
                   },
                   {
                     icon: Scale,
                     label: "Legal Status",
-                    value: "Corporation registered in South Korea",
+                    value: "Company Registered in Japan",
                   },
                   {
                     icon: Calendar,
                     label: "Year of Establishment",
-                    value: "2017",
+                    value: "2024",
                   },
                   {
                     icon: CircleDollarSign,
                     label: "Initial Capital",
-                    value: "KRW 100,000,000",
+                    value: "YEN 5000000",
                   },
                   {
                     icon: FileCheck,
                     label: "Business Registration",
-                    value: "Complete and compliant with Korean authorities",
+                    value: "Complete and Complaint with Japan Authorities",
                   },
                 ].map((item, index) => (
                   <motion.div
@@ -1020,11 +1019,11 @@ export default function HomePage() {
                       Office Address:
                     </p>
                     <address className="not-italic text-base sm:text-lg font-semibold text-gray-900 hover:text-[#B90004] transition-colors">
-                      Nextthey 55-ho, Panpacific B/D 2F,
+                      406, 4F Tekko Building
                       <br />
-                      Digital-ro 31-gil 12,
+                      1-8-2 Marunouchi Chiyoda-ku
                       <br />
-                      Guro-gu, Seoul, Korea 08380
+                      Tokyo, Japan  100-0005
                     </address>
                   </div>
                 </motion.div>
@@ -1050,9 +1049,9 @@ export default function HomePage() {
                 />
               </div>
               <p className="text-gray-400 mb-6">
-                World Prime Services Co. Ltd. is a legally registered
-                corporation in South Korea, committed to delivering efficient,
-                reliable, and strategic solutions in the aviation industry.
+                World Prime Services株式会社 is a legally registered corporation
+                in Japan, committed to delivering efficient, reliable, and
+                strategic solutions in the aviation industry.
               </p>
             </div>
 
@@ -1095,11 +1094,11 @@ export default function HomePage() {
                       href=""
                       className="text-sm font-semibold text-gray-50 hover:text-[#B90004] transition-colors"
                     >
-                      Nextthey 55-ho, Panpacific B/D 2F,
+                      406, 4F Tekko Building
                       <br />
-                      Digital-ro 31-gil 12,
+                      1-8-2 Marunouchi Chiyoda-ku
                       <br />
-                      Guro-gu, Seoul, Korea 08380
+                      Tokyo, Japan  100-0005
                     </a>
                   </div>
                 </div>
