@@ -261,7 +261,7 @@ export default function HomePage() {
             initial="hidden"
             animate={partnersInView ? "visible" : "hidden"}
             variants={staggerChildren}
-            className="w-full flex flex-wrap justify-around items-center mb-16  group"
+            className="w-full flex flex-wrap justify-around items-center mb-16 px-20 group"
           >
             {/* <Image
               src="/images/c1.png"
@@ -319,7 +319,7 @@ export default function HomePage() {
                   alt="clients logo"
                   width={160}
                   height={80}
-                  className="w-40 h-20 grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300"
+                  className="w-52 h-28 grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300"
                 />
               </motion.div>
             ))}
@@ -634,7 +634,7 @@ export default function HomePage() {
                 Our Team
               </h2>
               <p className="text-gray-600 mb-8">
-                Our japan-based team comprises experienced professionals with
+                Our Japan-based team comprises experienced professionals with
                 specialized expertise in:
               </p>
 
